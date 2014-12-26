@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>The Big Picture</title>
+<date>2014-12-26</date>
+</info>
+<simpara>Dan Allen &lt;<link xlink:href="https://github.com/mojavelinux">@mojavelinux</link>&gt;; Sarah White &lt;<link xlink:href="https://github.com/graphitefriction">@graphitefriction</link>&gt;; Ryan Waldron &lt;<link xlink:href="https://github.com/erebor">@erebor</link>&gt;
+:page-layout: base
+:idprefix:
+:idseparator: -
+:source-language: ruby
+:language: {source-language}
+:uri-org: <link xlink:href="https://github.com/asciidoctor">https://github.com/asciidoctor</link>
+:uri-repo: {uri-org}/asciidoctor
+:uri-asciidoctorj: {uri-org}/asciidoctorj
+:uri-asciidoctorjs: {uri-org}/asciidoctor.js
+:uri-project: <link xlink:href="http://asciidoctor.org">http://asciidoctor.org</link>
+:uri-docs: {uri-project}/docs
+:uri-news: {uri-project}/news
+:uri-manpage: {uri-project}/man/asciidoctor
+:uri-issues: {uri-repo}/issues
+:uri-contributors: {uri-repo}/graphs/contributors
+:uri-rel-file-base: link:
+:uri-rel-tree-base: link:
+:uri-changelog: {uri-rel-file-base}CHANGELOG.adoc
+:uri-contribute: {uri-rel-file-base}CONTRIBUTING.adoc
+:uri-license: {uri-rel-file-base}LICENSE.adoc
+:uri-tests: {uri-rel-tree-base}test
+:uri-discuss: <link xlink:href="http://discuss.asciidoctor.org">http://discuss.asciidoctor.org</link>
+:uri-irc: <link xlink:href="irc://irc.freenode.org/#asciidoctor">irc://irc.freenode.org/#asciidoctor</link>
+:uri-rubygem: <link xlink:href="https://rubygems.org/gems/asciidoctor">https://rubygems.org/gems/asciidoctor</link>
+:uri-what-is-asciidoc: {uri-docs}/what-is-asciidoc
+:uri-user-manual: {uri-docs}/user-manual
+:uri-install-doc: {uri-docs}/install-toolchain
+:uri-install-osx-doc: {uri-docs}/install-asciidoctor-macosx
+:uri-render-doc: {uri-docs}/render-documents
+:uri-themes-doc: {uri-docs}/produce-custom-themes-using-asciidoctor-stylesheet-factory
+:uri-gitscm-repo: <link xlink:href="https://github.com/git/git-scm.com">https://github.com/git/git-scm.com</link>
+:uri-prototype: {uri-gitscm-repo}/commits/master/lib/asciidoc.rb
+:uri-freesoftware: <link xlink:href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</link>
+:uri-foundation: <link xlink:href="http://foundation.zurb.com">http://foundation.zurb.com</link>
+:uri-tilt: <link xlink:href="https://github.com/rtomayko/tilt">https://github.com/rtomayko/tilt</link>
+:uri-ruby: <link xlink:href="https://ruby-lang.org">https://ruby-lang.org</link>
+:image-uri-screenshot: <link xlink:href="https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/screenshot.png">https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/screenshot.png</link></simpara>
+<simpara>{uri-project}/[Asciidoctor] is a <emphasis>fast</emphasis> text processor and publishing toolchain for converting {uri-what-is-asciidoc}[AsciiDoc] content to HTML5, DocBook 5 (or 4.5) and other formats.
+Asciidoctor is written in Ruby, packaged as a RubyGem and published to {uri-rubygem}[RubyGems.org].
+The gem is also included in several Linux distributions, including Fedora, Debian and Ubuntu.
+Asciidoctor is open source, {uri-repo}[hosted on GitHub] and released under the MIT license.</simpara>
+<itemizedlist role="compact">
+<title>Key documentation</title>
+<listitem>
+<simpara>{uri-docs}/what-is-asciidoc[What is Asciidoc?]</simpara>
+</listitem>
+<listitem>
+<simpara>{uri-docs}/asciidoc-writers-guide[AsciiDoc Writer&#8217;s Guide]</simpara>
+</listitem>
+<listitem>
+<simpara>{uri-docs}/asciidoc-syntax-quick-reference[AsciiDoc Syntax Reference]</simpara>
+</listitem>
+<listitem>
+<simpara>{uri-docs}/user-manual[Asciidoctor User Manual]</simpara>
+</listitem>
+</itemizedlist>
+<sidebar>
+<title>Where Ruby goes, Asciidoctor follows</title>
+<simpara>You can run Asciidoctor on the JVM using JRuby.
+To invoke the Asciidoctor API directly from Java and other JVM languages, use {uri-asciidoctorj}[AsciidoctorJ].
+There are plugins available, based on AsciidoctorJ, that integrate the Asciidoctor processor into Apache Maven, Gradle or Javadoc builds.</simpara>
+<simpara>Asciidoctor also runs in JavaScript.
+We use <link xlink:href="http://opalrb.org">Opal</link> to transcompile the Ruby source to JavaScript to produce {uri-asciidoctorjs}[Asciidoctor.js], a fully-functional version of Asciidoctor that works in any JavaScript environment, such as a web browser or Node.js.
+Asciidoctor.js is used to power the AsciiDoc preview extensions for Chrome, Atom, Brackets and other web-based tooling.</simpara>
+</sidebar>
+<formalpara>
+<title><emphasis role="strong">Project health</emphasis></title>
+<para><inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://img.shields.io/travis/asciidoctor/asciidoctor/master.svg"/>
+</imageobject>
+<textobject><phrase>Build Status (Travis CI)</phrase></textobject>
+</inlinemediaobject>
+<inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://ci.appveyor.com/api/projects/status/ifplu67oxvgn6ceq/branch/master?svg=true&amp;passingText=green%20bar&amp;failingText=%23fail&amp;pendingText=building%2E%2E%2E"/>
+</imageobject>
+<textobject><phrase>Build Status (AppVeyor)</phrase></textobject>
+</inlinemediaobject>
+<inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://codeclimate.com/github/asciidoctor/asciidoctor/badges/gpa.svg"/>
+</imageobject>
+<textobject><phrase>Code Climate</phrase></textobject>
+</inlinemediaobject>
+<inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://inch-ci.org/github/asciidoctor/asciidoctor.svg?branch=master"/>
+</imageobject>
+<textobject><phrase>Inline docs</phrase></textobject>
+</inlinemediaobject></para>
+</formalpara>
+<section xml:id="_the_big_picture">
+<title>The Big Picture</title>
+<simpara>Asciidoctor reads content written in plain text, as shown in the panel on the left in the image below, and converts it to HTML5, as shown rendered in the right panel.
+Asciidoctor applies a default stylesheet to the HTML5 document to provide a pleasant out-of-the-box experience.</simpara>
+<simpara>image::{image-uri-screenshot}[Preview of AsciiDoc source and corresponding rendered HTML]</simpara>
+</section>
+<section xml:id="_asciidoc_processing">
+<title>AsciiDoc Processing</title>
+<simpara>Asciidoctor reads and parses text written in the AsciiDoc syntax, then feeds the parse tree into a set of built-in templates to produce HTML5, DocBook 5 (or 4.5).
+You have the option of writing your own converter or providing {uri-tilt}[Tilt]-supported templates to customize the generated output or produce alternative formats.</simpara>
+<note>
+<simpara>Asciidoctor is a drop-in replacement for the original AsciiDoc Python processor (<literal>asciidoc.py</literal>).
+The Asciidoctor test suite has {uri-tests}[&gt; 1,500 tests] to ensure compatibility with the AsciiDoc syntax.</simpara>
+</note>
+<simpara>In addition to the standard AsciiDoc syntax, Asciidoctor recognizes additional markup and formatting options, such as font-based icons (e.g., <literal>icon:fire[]</literal>) and UI elements (e.g., <literal>button:[Save]</literal>).
+Asciidoctor also offers a modern, responsive theme based on {uri-foundation}[Foundation] to style the HTML5 output.</simpara>
+</section>
+<section xml:id="_requirements">
+<title>Requirements</title>
+<simpara>Asciidoctor works on Linux, OSX (Mac) and Windows and requires one of the following implementations of {uri-ruby}[Ruby]:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>MRI (Ruby 1.8.7, 1.9.3, 2.0.0 &amp; 2.1.2)</simpara>
+</listitem>
+<listitem>
+<simpara>JRuby 1.7 (Ruby 1.8 and 1.9 modes)</simpara>
+</listitem>
+<listitem>
+<simpara>Rubinius 2.2.x</simpara>
+</listitem>
+<listitem>
+<simpara>Opal (JavaScript)</simpara>
+</listitem>
+</itemizedlist>
+<simpara>We welcome your help testing Asciidoctor on these and other platforms.
+Refer to &lt;&lt;{idprefix}contributing,Contributing&gt;&gt; to learn how to get involved.</simpara>
+</section>
+<section xml:id="_installation">
+<title>Installation</title>
+<simpara>Asciidoctor can be installed using (a) the <literal>gem install</literal> command, (b) Bundler or (c) package managers for popular Linux distributions.</simpara>
+<tip>
+<simpara>The benefit of using a Linux package manager to install the gem is that it handles installing Ruby and the RubyGems library if those packages are not already installed on your machine.
+The drawback is that the package may not be available immediately after the release of the gem.
+If you need the latest version, you can always fallback to using the <literal>gem</literal> command.</simpara>
+</tip>
+<section xml:id="__a_gem_install">
+<title>(a) gem install</title>
+<simpara>Open a terminal and type: (without the leading <literal>$</literal>)</simpara>
+<literallayout class="monospaced">$ gem install asciidoctor</literallayout>
+<simpara>If you want to install a pre-release version (e.g., a release candidate), use:</simpara>
+<literallayout class="monospaced">$ gem install asciidoctor --pre</literallayout>
+<tip>
+<title>Upgrading your installation</title>
+<simpara>If you have an earlier version of Asciidoctor installed, you can update it using:</simpara>
+<literallayout class="monospaced">$ gem update asciidoctor</literallayout>
+<simpara>If you install a new version of the gem using <literal>gem install</literal> instead of gem update, you&#8217;ll have multiple versions installed.
+If that&#8217;s the case, use the following gem command to remove the old versions:</simpara>
+<literallayout class="monospaced">$ gem cleanup asciidoctor</literallayout>
+</tip>
+</section>
+<section xml:id="__b_bundler">
+<title>(b) Bundler</title>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>Create a Gemfile in the root folder of your project (or the current directory)</simpara>
+</listitem>
+<listitem>
+<simpara>Add the <literal>asciidoctor</literal> gem to your Gemfile as follows:</simpara>
+<screen>source 'https://rubygems.org'
+gem 'asciidoctor'
+# or specify the version explicitly
+# gem 'asciidoctor', '1.5.0'</screen>
+</listitem>
+<listitem>
+<simpara>Save the Gemfile</simpara>
+</listitem>
+<listitem>
+<simpara>Open a terminal and install the gem using:</simpara>
+<literallayout class="monospaced">$ bundle</literallayout>
+</listitem>
+</orderedlist>
+<simpara>To upgrade the gem, specify the new version in the Gemfile and run <literal>bundle</literal> again.
+Using <literal>bundle update</literal> is not recommended as it will also update other gems, which may not be the desired result.</simpara>
+</section>
+<section xml:id="__c_linux_package_managers">
+<title>(c) Linux package managers</title>
+<section xml:id="_yum_fedora_18_or_greater">
+<title>Yum (Fedora 18 or greater)</title>
+<simpara>To install the gem on Fedora 18 or greater using yum, open a terminal and type:</simpara>
+<literallayout class="monospaced">$ sudo yum install -y rubygem-asciidoctor</literallayout>
+<simpara>To upgrade the gem, use:</simpara>
+<literallayout class="monospaced">$ sudo yum update -y rubygem-asciidoctor</literallayout>
+<tip>
+<simpara>Your Fedora system may be configured to automatically update packages, in which case no action is required by you to update the gem.</simpara>
+</tip>
+</section>
+<section xml:id="_apt_get_debian_sid_ubuntu_saucy_or_greater">
+<title>apt-get (Debian Sid, Ubuntu Saucy or greater)</title>
+<simpara>To install the gem on Debian or Ubuntu, open a terminal and type:</simpara>
+<literallayout class="monospaced">$ sudo apt-get install -y asciidoctor</literallayout>
+<simpara>To upgrade the gem, use:</simpara>
+<literallayout class="monospaced">$ sudo apt-get upgrade -y asciidoctor</literallayout>
+<tip>
+<simpara>Your Debian or Ubuntu system may be configured to automatically update packages, in which case no action is required by you to update the gem.</simpara>
+</tip>
+</section>
+</section>
+<section xml:id="_other_installation_options">
+<title>Other installation options</title>
+<itemizedlist>
+<listitem>
+<simpara>{uri-install-doc}[Installing the Asciidoctor toolchain]</simpara>
+</listitem>
+<listitem>
+<simpara>{uri-install-osx-doc}[Installing Asciidoctor on Mac OS X]</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section xml:id="_usage">
+<title>Usage</title>
+<simpara>If the Asciidoctor gem installed successfully, the <literal>asciidoctor</literal> command line interface (CLI) will be available on your PATH.
+To verify it&#8217;s available, run the following in your terminal:</simpara>
+<literallayout class="monospaced">$ asciidoctor --version</literallayout>
+<simpara>You should see information about the Asciidoctor version and your Ruby environment printed in the terminal.</simpara>
+<literallayout role="output" class="monospaced">Asciidoctor 1.5.0 [http://asciidoctor.org]
+Runtime Environment (ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-linux])</literallayout>
+<simpara>Asciidoctor also provides an API.
+The API is intended for integration with other Ruby software, such as Rails, Sinatra and GitHub, and other languages, such as Java (via {uri-asciidoctorj}[AsciidoctorJ]) and JavaScript (via {uri-asciidoctorjs}[Asciidoctor.js]).</simpara>
+<section xml:id="_command_line_interface_cli">
+<title>Command line interface (CLI)</title>
+<simpara>The <literal>asciidoctor</literal> command allows you to invoke Asciidoctor from the command line (i.e., a terminal).</simpara>
+<simpara>The following command converts the file README.adoc to HTML and saves the result to the file README.html in the same directory.
+The name of the generated HTML file is derived from the source file by changing its file extension to <literal>.html</literal>.</simpara>
+<literallayout class="monospaced">$ asciidoctor README.adoc</literallayout>
+<simpara>You can control the Asciidoctor processor by adding various flags and switches, which you can learn about using:</simpara>
+<literallayout class="monospaced">$ asciidoctor --help</literallayout>
+<simpara>For instance, to write the file to a different directory, use:</simpara>
+<literallayout class="monospaced">$ asciidoctor -D output README.adoc</literallayout>
+<simpara>The <literal>asciidoctor</literal> {uri-manpage}[man page] provides a complete reference of the command line interface.</simpara>
+<simpara>Refer to the following resources to learn more about how to use the <literal>asciidoctor</literal> command.</simpara>
+<itemizedlist>
+<listitem>
+<simpara>{uri-render-doc}[How do I convert a document?]</simpara>
+</listitem>
+<listitem>
+<simpara>{uri-themes-doc}[How do I use the Asciidoctor stylesheet factory to produce custom themes?]</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section xml:id="_ruby_api">
+<title>Ruby API</title>
+<simpara>To use Asciidoctor in your application, you first need to require the gem:</simpara>
+<screen>require 'asciidoctor'</screen>
+<simpara>You can then convert an AsciiDoc source file to an HTML file using:</simpara>
+<screen>Asciidoctor.convert_file 'README.adoc', to_file: true, safe: 'safe'</screen>
+<warning>
+<simpara>When using Asciidoctor via the API, the default safe mode is <literal>:secure</literal>.
+In secure mode, several core features are disabled, including the <literal>include</literal> directive.
+If you want to enable these features, you&#8217;ll need to explicitly set the safe mode to <literal>server</literal> (recommended) or <literal>safe</literal>.</simpara>
+</warning>
+<simpara>You can also convert an AsciiDoc string to embeddable HTML (for inserting in an HTML page) using:</simpara>
+<screen>content = '_Zen_ in the art of writing http://asciidoctor.org[AsciiDoc].'
+Asciidoctor.convert content, safe: 'safe'</screen>
+<simpara>If you want the full HTML document, enable the <literal>header_footer</literal> option as follows:</simpara>
+<screen>content = '_Zen_ in the art of writing http://asciidoctor.org[AsciiDoc].'
+html = Asciidoctor.convert content, header_footer: true, safe: 'safe'</screen>
+<simpara>If you need access to the parsed document, you can split the conversion into discrete steps:</simpara>
+<screen>content = '_Zen_ in the art of writing http://asciidoctor.org[AsciiDoc].'
+document = Asciidoctor.load content, header_footer: true, safe: 'safe'
+puts document.doctitle
+html = document.convert</screen>
+<simpara>Keep in mind, if you don&#8217;t like the output Asciidoctor produces, <emphasis>you can change it!</emphasis>
+Asciidoctor supports custom {uri-tilt}[Tilt]-supported templates, which to allow you customize the output piecemeal, or custom converters, which give you 100% control over the output.</simpara>
+<simpara>For more information about how to use the API or to customize the output, see the {uri-user-manual}[user manual].</simpara>
+</section>
+</section>
+<section xml:id="_contributing">
+<title>Contributing</title>
+<simpara>In the spirit of {uri-freesoftware}[free software], <emphasis>everyone</emphasis> is encouraged to help improve this project.
+If you discover errors or omissions in the source code, documentation, or website content, please don&#8217;t hesitate to submit an issue or open a pull request with a fix.
+New contributors are always welcome!</simpara>
+<simpara>Here are some ways <emphasis role="strong">you</emphasis> can contribute:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>by using prerelease (alpha, beta or preview) versions</simpara>
+</listitem>
+<listitem>
+<simpara>by reporting bugs</simpara>
+</listitem>
+<listitem>
+<simpara>by suggesting new features</simpara>
+</listitem>
+<listitem>
+<simpara>by writing or editing documentation</simpara>
+</listitem>
+<listitem>
+<simpara>by writing specifications</simpara>
+</listitem>
+<listitem>
+<simpara>by writing code&#8201;&#8212;&#8201;<emphasis>No patch is too small.</emphasis></simpara>
+<itemizedlist>
+<listitem>
+<simpara>fix typos</simpara>
+</listitem>
+<listitem>
+<simpara>add comments</simpara>
+</listitem>
+<listitem>
+<simpara>clean up inconsistent whitespace</simpara>
+</listitem>
+<listitem>
+<simpara>write tests!</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+<listitem>
+<simpara>by refactoring code</simpara>
+</listitem>
+<listitem>
+<simpara>by fixing {uri-issues}[issues]</simpara>
+</listitem>
+<listitem>
+<simpara>by reviewing patches</simpara>
+</listitem>
+</itemizedlist>
+<simpara>The {uri-contribute}[Contributing] guide provides information on how to create, style, and submit issues, feature requests, code, and documentation to the Asciidoctor Project.</simpara>
+</section>
+<section xml:id="_getting_help">
+<title>Getting Help</title>
+<simpara>The Asciidoctor project is developed to help you easily write and publish your content.
+But we can&#8217;t do that without your feedback!
+We encourage you to ask questions and discuss any aspects of the project on the discussion list, Twitter or IRC.</simpara>
+<variablelist>
+<varlistentry>
+<term>Mailing list</term>
+<listitem>
+<simpara>{uri-discuss}</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Twitter (Chat)</term>
+<listitem>
+<simpara>#asciidoctor hashtag</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IRC (Chat)</term>
+<listitem>
+<simpara>{uri-irc}[#asciidoctor] on FreeNode IRC</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>The Asciidoctor organization on GitHub hosts the project&#8217;s source code, issue tracker, and sub-projects.</simpara>
+<variablelist>
+<varlistentry>
+<term>Source repository (git)</term>
+<listitem>
+<simpara>{uri-repo}</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Issue tracker</term>
+<listitem>
+<simpara>{uri-issues}</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Asciidoctor organization on GitHub</term>
+<listitem>
+<simpara>{uri-org}</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section xml:id="_copyright_and_licensing">
+<title>Copyright and Licensing</title>
+<simpara>Copyright &#169; 2012-2014 Dan Allen, Ryan Waldron and the Asciidoctor Project.
+Free use of this software is granted under the terms of the MIT License.</simpara>
+<simpara>See the {uri-license}[LICENSE] file for details.</simpara>
+</section>
+<section xml:id="_authors">
+<title>Authors</title>
+<simpara><emphasis role="strong">Asciidoctor</emphasis> is lead by <link xlink:href="https://github.com/mojavelinux">Dan Allen</link> and <link xlink:href="https://github.com/graphitefriction">Sarah White</link> and has received contributions from {uri-contributors}[many other individuals] in Asciidoctor&#8217;s awesome community.
+The project was initiated in 2012 by <link xlink:href="https://github.com/erebor">Ryan Waldron</link> and based on {uri-prototype}[a prototype] written by <link xlink:href="https://github.com/nickh">Nick Hengeveld</link>.</simpara>
+<simpara><emphasis role="strong">AsciiDoc</emphasis> was started by Stuart Rackham and has received contributions from many other individuals in the AsciiDoc community.</simpara>
+</section>
+<section xml:id="_changelog">
+<title>Changelog</title>
+<simpara>No changes.</simpara>
+</section>
+<section xml:id="_1_5_2_2014_11_27_mojavelinux">
+<title>1.5.2 (2014-11-27) - @mojavelinux</title>
+<variablelist>
+<varlistentry>
+<term>Enhancements</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>add docinfo extension (@mogztter) (#1162)</simpara>
+</listitem>
+<listitem>
+<simpara>allow docinfo to be in separate directory from content, specified by <literal>docinfodir</literal> attribute (@mogztter) (#511)</simpara>
+</listitem>
+<listitem>
+<simpara>enable TeX equation auto-numbering if <literal>eqnums</literal> attribute is set (@jxxcarlson) (#1110)</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Improvements</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>recognize <literal>--</literal> as valid line comment for callout numbers; make line comment configurable (#1068)</simpara>
+</listitem>
+<listitem>
+<simpara>upgrade highlight.js to version 8.4 (#1216)</simpara>
+</listitem>
+<listitem>
+<simpara>upgrade Font Awesome to version 4.2.0 (@clojens) (#1201)</simpara>
+</listitem>
+<listitem>
+<simpara>define JAVASCRIPT_PLATFORM constant to simplify conditional logic in the JavaScript environment (#897)</simpara>
+</listitem>
+<listitem>
+<simpara>provide access to destination directory, outfile and outdir via Document object (#1203)</simpara>
+</listitem>
+<listitem>
+<simpara>print encoding information in version report produced by <literal>asciidoctor -v</literal> (#1210)</simpara>
+</listitem>
+<listitem>
+<simpara>add intrinsic attribute named <literal>cpp</literal> with value <literal>C++</literal> (#1208)</simpara>
+</listitem>
+<listitem>
+<simpara>preserve URI targets passed to <literal>stylesheet</literal> and related attributes (#1192)</simpara>
+</listitem>
+<listitem>
+<simpara>allow numeric characters in block attribute name (#1103)</simpara>
+</listitem>
+<listitem>
+<simpara>support custom YouTube playlists (#1105)</simpara>
+</listitem>
+<listitem>
+<simpara>make start number for unique id generation configurable (#1148)</simpara>
+</listitem>
+<listitem>
+<simpara>normalize and force UTF-8 encoding of docinfo content (#831)</simpara>
+</listitem>
+<listitem>
+<simpara>allow subs and default_subs to be specified in Block constructor (#749)</simpara>
+</listitem>
+<listitem>
+<simpara>enhance error message when reading binary input files (@mogztter) (#1158)</simpara>
+</listitem>
+<listitem>
+<simpara>add <literal>append</literal> method as alias to <literal>&lt;&lt;</literal> method on AbstractBlock (#1085)</simpara>
+</listitem>
+<listitem>
+<simpara>assign value of <literal>preface-title</literal> as title of preface node (#1090)</simpara>
+</listitem>
+<listitem>
+<simpara>fix spacing around checkbox in checklist (#1138)</simpara>
+</listitem>
+<listitem>
+<simpara>automatically load Slim&#8217;s include plugin when using slim templates (@jirutka) (#1151)</simpara>
+</listitem>
+<listitem>
+<simpara>mixin Slim helpers into execution scope of slim templates (@jirutka) (#1143)</simpara>
+</listitem>
+<listitem>
+<simpara>improve DocBook output for manpage doctype (@bk2204) (#1134, #1142)</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Compliance</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>substitute attribute entry value in attributes defined outside of header (#1130)</simpara>
+</listitem>
+<listitem>
+<simpara>allow empty cell to appear at end of table row (#1106)</simpara>
+</listitem>
+<listitem>
+<simpara>only produce one row for table in CSV or DSV format with a single cell (#1180)</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bug fixes</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>add explicit to_s call to generate delimiter settings for MathJax config (#1198)</simpara>
+</listitem>
+<listitem>
+<simpara>fix includes that reference absolute Windows paths (#1144)</simpara>
+</listitem>
+<listitem>
+<simpara>apply DSL to extension block in a way compatible with Opal</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<section xml:id="_1_5_1_2014_09_29_mojavelinux">
+<title>1.5.1 (2014-09-29) - @mojavelinux</title>
+<variablelist>
+<varlistentry>
+<term>Bug fixes</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>recognize tag directives inside comments within XML files for including tagged regions</simpara>
+</listitem>
+<listitem>
+<simpara>restore passthroughs inside footnotes when more than one footnote appears on the same line</simpara>
+</listitem>
+<listitem>
+<simpara>-S flag in cli recognizes safe mode name as lowercase string</simpara>
+</listitem>
+<listitem>
+<simpara>do not match # in character reference when looking for marked text</simpara>
+</listitem>
+<listitem>
+<simpara>add namespace to lang attribute in DocBook 5 backend</simpara>
+</listitem>
+<listitem>
+<simpara>restore missing space before conum on last line of listing when highlighting with Pygments</simpara>
+</listitem>
+<listitem>
+<simpara>place conums on correct lines when line numbers are enabled when highlighting with Pygments</simpara>
+</listitem>
+<listitem>
+<simpara>don&#8217;t expand mailto links in print styles</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Improvements</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>implement File.read in Node (JavaScript) environment</simpara>
+</listitem>
+<listitem>
+<simpara>assign sectnumlevels and toclevels values to maxdepth attribute on AsciiDoc processing instructions in DocBook output</simpara>
+</listitem>
+<listitem>
+<simpara>add test for usage of image block macro with data URI</simpara>
+</listitem>
+<listitem>
+<simpara>use badges from shields.io in README</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<section xml:id="_1_5_0_2014_08_12_mojavelinux">
+<title>1.5.0 (2014-08-12) - @mojavelinux</title>
+<variablelist>
+<varlistentry>
+<term>Performance</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>10% increase in speed compared to 0.1.4</simpara>
+</listitem>
+<listitem>
+<simpara>rewrite built-in converters in Ruby instead of ERB</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Enhancements</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>introduce new curved quote syntax ("`double quotes`", '`single quotes`') if compat-mode attribute not set (#1046)</simpara>
+</listitem>
+<listitem>
+<simpara>add single curved quote replacement for `' (#715)</simpara>
+</listitem>
+<listitem>
+<simpara>use backtick (`) for monospaced text if compat-mode attribute not set (#714, #718)</simpara>
+</listitem>
+<listitem>
+<simpara>use single and double plus (+, ++) for inline passthrough if compat-mode attribute not set (#714, #718)</simpara>
+</listitem>
+<listitem>
+<simpara>disable single quotes as formatting marks for emphasized text if compat-mode attribute not set (#717)</simpara>
+</listitem>
+<listitem>
+<simpara>enable compat-mode by default if document has atx-style doctitle</simpara>
+</listitem>
+<listitem>
+<simpara>output phrase surrounded by # as marked text (i.e., &lt;mark&gt;) (#225)</simpara>
+</listitem>
+<listitem>
+<simpara>add MathJax integration and corresponding blocks and macros (#492, #760)</simpara>
+</listitem>
+<listitem>
+<simpara>switch to open source fonts (Open Sans, Noto Serif and Droid Sans Mono) in default stylesheet, major refinements to theme (#879)</simpara>
+</listitem>
+<listitem>
+<simpara>embed remote images when data-uri and allow-uri-read attributes are set (#612)</simpara>
+</listitem>
+<listitem>
+<simpara>support leveloffset on include directive and honor relative leveloffset values (#530)</simpara>
+</listitem>
+<listitem>
+<simpara>switch default docbook backend to docbook5 (@bk2204) (#554)</simpara>
+</listitem>
+<listitem>
+<simpara>added hide-uri-scheme attribute to hide uri scheme in automatic links (#800)</simpara>
+</listitem>
+<listitem>
+<simpara>allow substitutions to be incrementally added &amp; removed (#522)</simpara>
+</listitem>
+<listitem>
+<simpara>add compatibility with Opal, add shim compat library, use compatibility regexp, require libraries properly (@mogztter) (#679, #836, #846)</simpara>
+</listitem>
+<listitem>
+<simpara>output XHTML when backend is xhtml or xhtml5 (#494)</simpara>
+</listitem>
+<listitem>
+<simpara>add shorthand subs and specialchars as an alias for specialcharacters (#579)</simpara>
+</listitem>
+<listitem>
+<simpara>deprecate toc2 attribute in favor of position and placement values on toc attribute (e.g., toc=left) (#706)</simpara>
+</listitem>
+<listitem>
+<simpara>add source map (file and line number) information to blocks (#861)</simpara>
+</listitem>
+<listitem>
+<simpara>write to file by default if input is file (#907)</simpara>
+</listitem>
+<listitem>
+<simpara>add -r and -I flags from ruby command to asciidoctor command for loading additional libraries (#574)</simpara>
+</listitem>
+<listitem>
+<simpara>support backslash (\) as line continuation character in the value of an attribute entry (#1022)</simpara>
+</listitem>
+<listitem>
+<simpara>disable subs on pass block by default (#737)</simpara>
+</listitem>
+<listitem>
+<simpara>add basic support for resolving xref target from reftext (#589)</simpara>
+</listitem>
+<listitem>
+<simpara>add time range anchor to video element (#886)</simpara>
+</listitem>
+<listitem>
+<simpara>match implicit URLs that use the file scheme (#853)</simpara>
+</listitem>
+<listitem>
+<simpara>added sectnumlevels to control depth of section numbering (#549)</simpara>
+</listitem>
+<listitem>
+<simpara>add hardbreaks option to block (#630)</simpara>
+</listitem>
+<listitem>
+<simpara>sub attributes in manname (e.g., {docname})</simpara>
+</listitem>
+<listitem>
+<simpara>warn on reference to missing attribute if attribute-missing is "warn"</simpara>
+</listitem>
+<listitem>
+<simpara>only enable toc macro if toc is enabled and toc-placement attribute has the value macro (#706)</simpara>
+</listitem>
+<listitem>
+<simpara>add sectnums attribute as alternative alias to numbered attribute (#684)</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Improvements</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>don&#8217;t select lines that contain a tag directive when including tagged lines, make tag regexp more strict (#1027)</simpara>
+</listitem>
+<listitem>
+<simpara>use https scheme for assets by default</simpara>
+</listitem>
+<listitem>
+<simpara>upgrade to Font Awesome 4.1 (@mogztter) (#752)</simpara>
+</listitem>
+<listitem>
+<simpara>improve print styles, add print styles for book doctype (@leif81) (#997, #952)</simpara>
+</listitem>
+<listitem>
+<simpara>add proper grid and frame styles for tables (@leif81) (#569)</simpara>
+</listitem>
+<listitem>
+<simpara>use glyphs for checkboxes when not using font icons (#878)</simpara>
+</listitem>
+<listitem>
+<simpara>prefer source-language attribute over language attribute for defining default source language (#888)</simpara>
+</listitem>
+<listitem>
+<simpara>pass document as first argument to process method on Preprocessor</simpara>
+</listitem>
+<listitem>
+<simpara>don&#8217;t parse link attributes when linkattrs is set unless text contains equal sign</simpara>
+</listitem>
+<listitem>
+<simpara>detect bare links, mark with bare class; don&#8217;t repeat URL of bare link in print styles</simpara>
+</listitem>
+<listitem>
+<simpara>allow Treeprocessor#process method to replace tree (#1035)</simpara>
+</listitem>
+<listitem>
+<simpara>add AbstractNode#find_by method to locate nodes in tree (#862)</simpara>
+</listitem>
+<listitem>
+<simpara>add API for parsing title and subtitle (#1000)</simpara>
+</listitem>
+<listitem>
+<simpara>add use_fallback option to doctitle, document method</simpara>
+</listitem>
+<listitem>
+<simpara>constrain subscript &amp; superscript markup (#564, #936)</simpara>
+</listitem>
+<listitem>
+<simpara>match cell specs when cell separator is customized (#985)</simpara>
+</listitem>
+<listitem>
+<simpara>use stylesheet to set default table width (#975)</simpara>
+</listitem>
+<listitem>
+<simpara>display nested elements correctly in toc (@kenfinnigan) (#967)</simpara>
+</listitem>
+<listitem>
+<simpara>add support for id attribute on links (@mogztter) (#935)</simpara>
+</listitem>
+<listitem>
+<simpara>add support for title attribute on links (@aslakknutsen)</simpara>
+</listitem>
+<listitem>
+<simpara>add -t flag to cli to control output of timing information (@mogztter) (#909)</simpara>
+</listitem>
+<listitem>
+<simpara>rewrite converter API (#778)</simpara>
+</listitem>
+<listitem>
+<simpara>rewrite extensions to support extension instances for AsciidoctorJ (#804)</simpara>
+</listitem>
+<listitem>
+<simpara>integrate thread_safe gem (#638)</simpara>
+</listitem>
+<listitem>
+<simpara>allow inline macro extensions that define a custom regexp to be matched (#792)</simpara>
+</listitem>
+<listitem>
+<simpara>make Reader#push_include work with default file, path and dir (@bk2204) (#743)</simpara>
+</listitem>
+<listitem>
+<simpara>honor custom outfilesuffix and introduce relfileprefix (#801)</simpara>
+</listitem>
+<listitem>
+<simpara>add author and copyright to meta in HTML5 backend (#838)</simpara>
+</listitem>
+<listitem>
+<simpara>output attribution in front of citetitle for quote and verse blocks</simpara>
+</listitem>
+<listitem>
+<simpara>recognize float style with shorthand syntax outside block (#818)</simpara>
+</listitem>
+<listitem>
+<simpara>honor background color in syntax highlighting themes (#813)</simpara>
+</listitem>
+<listitem>
+<simpara>print runtime environment in version output, support -v as version flag (#785)</simpara>
+</listitem>
+<listitem>
+<simpara>unwrap preamble if standalone (#533)</simpara>
+</listitem>
+<listitem>
+<simpara>drop leading &amp; trailing blank lines in verbatim &amp; raw content (#724)</simpara>
+</listitem>
+<listitem>
+<simpara>remove trailing endlines from source data (#727)</simpara>
+</listitem>
+<listitem>
+<simpara>add flag to cli to suppress warnings (#557)</simpara>
+</listitem>
+<listitem>
+<simpara>emit warning if tag(s) not found in include file (#639)</simpara>
+</listitem>
+<listitem>
+<simpara>use &lt;th&gt; element for vertical table headers instead of header class (@davidgamba) (#738)</simpara>
+</listitem>
+<listitem>
+<simpara>share select references between AsciiDoc-style cell &amp; main document (#729)</simpara>
+</listitem>
+<listitem>
+<simpara>number chapters sequentially, always (#685)</simpara>
+</listitem>
+<listitem>
+<simpara>add vbar attribute, make brvbar resolve properly (#643)</simpara>
+</listitem>
+<listitem>
+<simpara>add implicit user-home attribute that resolves to user&#8217;s home directory (#629)</simpara>
+</listitem>
+<listitem>
+<simpara>enable sidebar toc for small screens (#628)</simpara>
+</listitem>
+<listitem>
+<simpara>add square brackets around button in HTML output (#631)</simpara>
+</listitem>
+<listitem>
+<simpara>make language hover text work for all languages in listing block</simpara>
+</listitem>
+<listitem>
+<simpara>set background color on toc2 to cover scrolling content (@neher)</simpara>
+</listitem>
+<listitem>
+<simpara>make document parsing a discrete step, make Reader accessible as property on Document</simpara>
+</listitem>
+<listitem>
+<simpara>allow custom converter to set backend info such as outfilesuffix and htmlsyntax</simpara>
+</listitem>
+<listitem>
+<simpara>report an informative error message when a converter cannot be resolved (@mogztter)</simpara>
+</listitem>
+<listitem>
+<simpara>add conum class to b element when icons are disabled, make conum CSS selector more specific</simpara>
+</listitem>
+<listitem>
+<simpara>expose Document object to extension point IncludeProcessor (@aslakknutsen)</simpara>
+</listitem>
+<listitem>
+<simpara>style audioblock title, simplify rules for block titles</simpara>
+</listitem>
+<listitem>
+<simpara>alias :name_attributes to :positional_attributes in extension DSL</simpara>
+</listitem>
+<listitem>
+<simpara>upgrade to highlight.js 7.4 (and later 8.0) (@mogztter) (#756)</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Compliance</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>only include xmlns in docbook45 backend if xmlns attribute is specified (#929)</simpara>
+</listitem>
+<listitem>
+<simpara>add xmlns attribute for xhtml output (@bk2204)</simpara>
+</listitem>
+<listitem>
+<simpara>warn if table without a body is converted to DocBook (#961)</simpara>
+</listitem>
+<listitem>
+<simpara>wrap &lt;para&gt; around admonition inside example block in DocBook 4.5 (#931)</simpara>
+</listitem>
+<listitem>
+<simpara>use &lt;informalfigure&gt; if block image doesn&#8217;t have a title (#927)</simpara>
+</listitem>
+<listitem>
+<simpara>fix invalid docbook when adding role to formatted text (#956)</simpara>
+</listitem>
+<listitem>
+<simpara>move all compliance flags to Compliance module (#624)</simpara>
+</listitem>
+<listitem>
+<simpara>add compliance setting to control use of shorthand property syntax (#789)</simpara>
+</listitem>
+<listitem>
+<simpara>wrap top-level content inside preamble in DocBook backend when doctype is book (#971)</simpara>
+</listitem>
+<listitem>
+<simpara>escape special chars in image alt text (#972)</simpara>
+</listitem>
+<listitem>
+<simpara>set starting number in ordered list for docbook (@megathaum) (#925)</simpara>
+</listitem>
+<listitem>
+<simpara>match word characters in regular expressions as defined by Unicode (#892)</simpara>
+</listitem>
+<listitem>
+<simpara>put source language class names on child code element of pre element (#921)</simpara>
+</listitem>
+<listitem>
+<simpara>ignore case of attribute in conditional directives (#903)</simpara>
+</listitem>
+<listitem>
+<simpara>allow attribute entry to reset / reseed counter (#870)</simpara>
+</listitem>
+<listitem>
+<simpara>allow doctype to be set in AsciiDoc table cell (#863)</simpara>
+</listitem>
+<listitem>
+<simpara>match URL macro following entity (@jmbruel) (#819)</simpara>
+</listitem>
+<listitem>
+<simpara>handle BOM when normalizing source (#824)</simpara>
+</listitem>
+<listitem>
+<simpara>don&#8217;t output revhistory if revdate is not set (#802)</simpara>
+</listitem>
+<listitem>
+<simpara>perform normal subs on verse content (#799)</simpara>
+</listitem>
+<listitem>
+<simpara>automatically wrap part intro content in partintro block, emit warning if part is invalid (#768)</simpara>
+</listitem>
+<listitem>
+<simpara>force encoding of docinfo content to UTF-8 (#773)</simpara>
+</listitem>
+<listitem>
+<simpara>add scaling &amp; alignment attributes to block image in DocBook backend (#763)</simpara>
+</listitem>
+<listitem>
+<simpara>substitute anchor and xref macros in footnotes (#676)</simpara>
+</listitem>
+<listitem>
+<simpara>remove all string mutation operations for compatibility with Opal (#735)</simpara>
+</listitem>
+<listitem>
+<simpara>honor reftext defined in embedded section title anchor (#697)</simpara>
+</listitem>
+<listitem>
+<simpara>allow spaces in reftext defined in block anchor (#695)</simpara>
+</listitem>
+<listitem>
+<simpara>use reftext of section or block in text of xref link (#693)</simpara>
+</listitem>
+<listitem>
+<simpara>number sections in appendix using appendix number (#683)</simpara>
+</listitem>
+<listitem>
+<simpara>unescape escaped square closing bracket in footnote text (#677)</simpara>
+</listitem>
+<listitem>
+<simpara>support quoted index terms that may contain commas (#597)</simpara>
+</listitem>
+<listitem>
+<simpara>don&#8217;t assign role attribute if quoted text has no roles (#647)</simpara>
+</listitem>
+<listitem>
+<simpara>disallow quoted values in block and inline anchors</simpara>
+</listitem>
+<listitem>
+<simpara>add % to scaledwidth if no units given</simpara>
+</listitem>
+<listitem>
+<simpara>ignore block attribute with unquoted value None</simpara>
+</listitem>
+<listitem>
+<simpara>preserve entity references with 5 digits</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bug Fixes</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>resolve relative paths relative to base_dir in unsafe mode (#690)</simpara>
+</listitem>
+<listitem>
+<simpara>properly handle nested passthroughs (#1034)</simpara>
+</listitem>
+<listitem>
+<simpara>don&#8217;t clobber outfilesuffix attribute if locked (#1024)</simpara>
+</listitem>
+<listitem>
+<simpara>correctly calculate columns if colspan used in first row of table (#924)</simpara>
+</listitem>
+<listitem>
+<simpara>pass theme to Pygments when pygments-css=style (#919)</simpara>
+</listitem>
+<listitem>
+<simpara>fallback to text lexer when using pygments for source highlighting (#987)</simpara>
+</listitem>
+<listitem>
+<simpara>only make special section if style is specified (#917)</simpara>
+</listitem>
+<listitem>
+<simpara>an unresolved footnote ref should not crash processor (#876)</simpara>
+</listitem>
+<listitem>
+<simpara>rescue failure to resolve ::Dir.home (#896)</simpara>
+</listitem>
+<listitem>
+<simpara>recognize Windows UNC path as absolute and preserve it (#806)</simpara>
+</listitem>
+<listitem>
+<simpara>adjust file glob to account for backslash in Windows paths (#805)</simpara>
+</listitem>
+<listitem>
+<simpara>don&#8217;t match e-mail address inside URL (#866)</simpara>
+</listitem>
+<listitem>
+<simpara>test include directive resolves file with space in name (#798)</simpara>
+</listitem>
+<listitem>
+<simpara>return nil from Reader#push_include and Reader#pop_include methods (#745)</simpara>
+</listitem>
+<listitem>
+<simpara>fixed broken passthroughs caused by source highlighting (#720)</simpara>
+</listitem>
+<listitem>
+<simpara>copy custom stylesheet if linkcss is set (#300)</simpara>
+</listitem>
+<listitem>
+<simpara>honor list continuations for indented, nested list items (#664)</simpara>
+</listitem>
+<listitem>
+<simpara>fix syntax errors in converters (@jljouannic)</simpara>
+</listitem>
+<listitem>
+<simpara>fix iconfont-remote setting</simpara>
+</listitem>
+<listitem>
+<simpara>fix syntax error (target &#8594; node.target) in Docbook 5 converter (@jf647)</simpara>
+</listitem>
+<listitem>
+<simpara>output and style HTML for toc macro correctly</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Infrastructure</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<simpara>add Ruby 2.1 to list of supported platforms</simpara>
+</listitem>
+<listitem>
+<simpara>reenable rbx in Travis build</simpara>
+</listitem>
+<listitem>
+<simpara>switch tests to minitest (@ktdreyer)</simpara>
+</listitem>
+<listitem>
+<simpara>update RPM for Fedora Rawhide (@ktdreyer)</simpara>
+</listitem>
+<listitem>
+<simpara>refactor unit tests so they work in RubyMine (@cmoulliard)</simpara>
+</listitem>
+<listitem>
+<simpara>add preliminary benchmark files to repository (#1021)</simpara>
+</listitem>
+<listitem>
+<simpara>clean out old fixtures from test suite (#960)</simpara>
+</listitem>
+<listitem>
+<simpara>add initial Cucumber test infrastructure (#731)</simpara>
+</listitem>
+<listitem>
+<simpara>use gem tasks from Bundler in Rakefile (#654)</simpara>
+</listitem>
+<listitem>
+<simpara>build gemspec files using git ls-tree (#653)</simpara>
+</listitem>
+<listitem>
+<simpara>use in-process web server for URI tests</simpara>
+</listitem>
+<listitem>
+<simpara>update manpage to reflect updates in 1.5.0</simpara>
+</listitem>
+<listitem>
+<simpara>rework README (@mogztter) (#651)</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>Refer to the {uri-changelog}[CHANGELOG] for a complete list of changes in older releases.</simpara>
+</section>
+</section>
+</article>

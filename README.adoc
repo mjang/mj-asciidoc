@@ -1,4 +1,4 @@
-= Asciidoctor
+
 Dan Allen <https://github.com/mojavelinux[@mojavelinux]>; Sarah White <https://github.com/graphitefriction[@graphitefriction]>; Ryan Waldron <https://github.com/erebor[@erebor]>
 // settings:
 :page-layout: base
@@ -343,6 +343,8 @@ The project was initiated in 2012 by https://github.com/erebor[Ryan Waldron] and
 
 == Changelog
 
+No changes.
+
 == 1.5.2 (2014-11-27) - @mojavelinux
 
 Enhancements::
@@ -530,7 +532,6 @@ Compliance::
   * automatically wrap part intro content in partintro block, emit warning if part is invalid (#768)
   * force encoding of docinfo content to UTF-8 (#773)
   * add scaling & alignment attributes to block image in DocBook backend (#763)
-  * add support for pass:[anchor:<id>[<reftext>\]] macro (#531)
   * substitute anchor and xref macros in footnotes (#676)
   * remove all string mutation operations for compatibility with Opal (#735)
   * honor reftext defined in embedded section title anchor (#697)
